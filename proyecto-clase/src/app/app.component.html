@@ -1,0 +1,30 @@
+<div class="container">
+  <h2>Ingresa tu nombre</h2>
+  <input [(ngModel)]="nombre" type="text" placeholder="Escribe tu nombre aquí" />
+  <button (click)="mostrarGustos()">Enviar</button>
+
+  <div *ngIf="mostrarLista">
+    <h3>Las cosas que le gustan a {{ nombre }}:</h3>
+    <ul>
+      <li *ngFor="let item of gustos">
+        <img [src]="item.imagen" alt="{{ item.nombre }}" width="100" height="100">
+        {{ item.nombre }}
+      </li>
+    </ul>
+
+    <h3>Las cosas que no le gustan a {{ nombre }}:</h3>
+    <ul>
+      <li *ngFor="let item of noGustos">
+        <img [src]="item.imagen" alt="{{ item.nombre }}" width="100" height="100">
+        {{ item.nombre }}
+      </li>
+    </ul>
+
+    <h3>🎵 Canciones favoritas de {{ nombre }}:</h3>
+    <ul>
+      <li *ngFor="let cancion of canciones">
+        <a [href]="cancion.link" target="_blank">{{ cancion.titulo }}</a>
+      </li>
+    </ul>
+  </div>
+</div>
